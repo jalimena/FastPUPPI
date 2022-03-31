@@ -40,17 +40,17 @@ gROOT.ForceStyle()
 #open file
 inputFile = TFile("../idTuple_TTbar_PU200.110X_v2.root")
 if(inputFile.IsZombie()):
-    print "input file is zombie"
+    print("input file is zombie")
     sys.exit(1)
 inputFile.cd()
 keys = []
 for key in inputFile.GetListOfKeys():
     keys.append(key.GetName())
     if (key.GetClassName() != "TDirectoryFile"):
-        print "no TDirectoryFile"
+        print("no TDirectoryFile")
         sys.exit(1)
 if not "ntuple" in keys:
-    print "no Tree, exiting"
+    print("no Tree, exiting")
     sys.exit(1)
 tree = inputFile.Get("ntuple/tree")
 
