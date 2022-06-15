@@ -29,6 +29,12 @@ from L1Trigger.Phase2L1ParticleFlow.l1ParticleFlow_cff import pfTracksFromL1Trac
 process.pfTracksFromL1TracksHGCal = pfTracksFromL1TracksHGCal.clone()
 process.pfTracksFromL1TracksBarrel = pfTracksFromL1TracksBarrel.clone()
 
+#to use the extended track collection
+process.pfTracksFromL1TracksHGCal.L1TrackTag = cms.InputTag("TTTracksFromExtendedTrackletEmulation", "Level1TTTracks")
+process.pfTracksFromL1TracksHGCal.nParam = cms.uint32(5)
+process.pfTracksFromL1TracksBarrel.L1TrackTag = cms.InputTag("TTTracksFromExtendedTrackletEmulation", "Level1TTTracks")
+process.pfTracksFromL1TracksBarrel.nParam = cms.uint32(5)
+
 ntuple = cms.EDAnalyzer("IDNTuplizer",
                         src = cms.InputTag("pfTracksFromL1TracksHGCal"),
                         #src = cms.InputTag("pfTracksFromL1TracksBarrel"),
